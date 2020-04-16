@@ -7,9 +7,6 @@
   width: 100%;
   transition: left 1s; }
 
-.first-item {
-  z-index: 100; }
-
 .image-flower {
   background-image: url(../homeTemplate/flower.jpg); }
 
@@ -18,6 +15,21 @@
 
 .image-trees {
   background-image: url(../homeTemplate/trees.jpeg); }
+
+.image-waves {
+  background-image: url(../homeTemplate/waves.jpg); }
+
+.image-leaves {
+  background-image: url(../homeTemplate/leaves.jpg); }
+
+.image-clouds {
+  background-image: url(../homeTemplate/clouds.jpg); }
+
+#big-logo {
+  padding-top: 0;
+  padding-bottom: 0; }
+  #big-logo img {
+    max-height: 3rem; }
 
 /*! bulma.io v0.8.1 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
