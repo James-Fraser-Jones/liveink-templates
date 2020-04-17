@@ -12,61 +12,27 @@ $(document).ready(function() {
 
   feather.replace() //initialize feather icons
 
-  let item = $(".carosel-item").toArray()[0];
-  setTimeout(slideOutLeft(item), 2000);
+  initCarosel(); //initialize carosel
 });
 
-function slideOutLeft(item){
-  item.classList.toggle("slide-out-left");
-  setTimeout(() => {
-    item.classList.toggle("offscreen-left");
-    item.classList.toggle("slide-out-left");
-  }, 1000);
+function initCarosel(){
+  let items = $(".carosel-item").toArray();
+  iterateCarosel(items, 0, items.length);
 }
-
-// function initCarosel(){
-//   let items = $(".carosel-item").toArray();
-//   items.forEach((item, index) => {
-//     item.style.left = (index * 100) + "vw";
-//   });
-// }
-
-// function slide(lr){
-//   //inital loop correction
-//   if (lr){
-    
-//   }
-
-//   let items = $(".carosel-item").toArray();
-//   items.forEach((item) => {
-//     let left = item.style.left;
-//     let units = parseInt(left.slice(0, left.length-2));
-//     item.style.left = (lr ? (units - 100) : (units + 100)) + "vw";
-//   });
-
-//   //post loop correction
-//   if (!lr){
-
-//   }
-// }
-
-/**
- * Cycling carosel:
- * |   N    | Viewport |    2    |    3    |   ...   | (where N is last frame)
- * We have calc(...vw...) (Viewport Width) to implement the functionality
- * We need animation/transition, drag functionality, and threshold logic to 
- * determine whether to snap back to original frame or snap to new frame when user "drops"
- * 
- * First priority:
- * init function to set correct left property for arbitrary number of slides and in correct order
- * slide function to slide left or right in a cycle
- * 
- * Second priority:
- * animation of sliding on slide function
- * 
- * Third priority:
- * drag to change left property between 3 slides (left, center, right)
- * 
- * Fourth priority:
- * snapping to original or new frame based on a threshold 
- */
+function iterateCarosel(items, counter, size){
+  setTimeout(() => {
+    let next = (counter + 1) % size;
+    slide(items[counter], "slide-out-left");
+    slide(items[next], "slide-in-left");
+    iterateCarosel(items, next, size);
+  },5000);
+}
+function slide(item, animation){
+  let slideIn = (animation.split("-")[1] == "in");
+  if (slideIn) item.classList.remove("is-hidden");
+  item.classList.add(animation);
+  setTimeout(() => {
+    if (!slideIn) item.classList.add("is-hidden");
+    item.classList.remove(animation);
+  },1000);
+}

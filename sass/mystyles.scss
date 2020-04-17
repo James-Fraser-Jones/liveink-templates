@@ -47,59 +47,26 @@ $link: $liveink;
 .carosel {
     position: relative;
 }
-
 .carosel-item {
-    background-position: center;
     position: absolute;
+    background-position: center;
     width: 100%;
 }
-
 .slide-in-left {
     animation-name: slide-in-left;
     animation-duration: 1s;
-    left: 0;
 }
 @keyframes slide-in-left {
     from {left: 100vw;}
     to {left: 0;}
 }
-
 .slide-out-left {
     animation-name: slide-out-left;
     animation-duration: 1s;
-    left: -100vw;
 }
 @keyframes slide-out-left {
     from {left: 0;}
     to {left: -100vw;}
-}
-
-.slide-in-right {
-    animation-name: slide-in-right;
-    animation-duration: 1s;
-    left: 0;
-}
-@keyframes slide-in-right {
-    from {left: -100vw;}
-    to {left: 0;}
-}
-
-.slide-out-right {
-    animation-name: slide-out-right;
-    animation-duration: 1s;
-    left: 100vw;
-}
-@keyframes slide-out-right {
-    from {left: 0;}
-    to {left: 100vw;}
-}
-
-.offscreen-left {
-    left: -100vw;
-}
-
-.offscreen-right {
-    left: 100vw;
 }
 //****************************************************
 
