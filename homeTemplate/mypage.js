@@ -12,34 +12,43 @@ $(document).ready(function() {
 
   feather.replace() //initialize feather icons
 
-  initCarosel();
+  let item = $(".carosel-item").toArray()[0];
+  setTimeout(slideOutLeft(item), 2000);
 });
 
-function initCarosel(){
-  var items = $(".carosel-item").toArray();
-  items.forEach((item, index) => {
-    item.style.left = (index * 100) + "vw";
-  });
+function slideOutLeft(item){
+  item.classList.toggle("slide-out-left");
+  setTimeout(() => {
+    item.classList.toggle("offscreen-left");
+    item.classList.toggle("slide-out-left");
+  }, 1000);
 }
 
-function slide(lr){
-  //inital loop correction
-  if (lr){
+// function initCarosel(){
+//   let items = $(".carosel-item").toArray();
+//   items.forEach((item, index) => {
+//     item.style.left = (index * 100) + "vw";
+//   });
+// }
+
+// function slide(lr){
+//   //inital loop correction
+//   if (lr){
     
-  }
+//   }
 
-  var items = $(".carosel-item").toArray();
-  items.forEach((item) => {
-    var left = item.style.left;
-    var units = parseInt(left.slice(0, left.length-2));
-    item.style.left = (lr ? (units - 100) : (units + 100)) + "vw";
-  });
+//   let items = $(".carosel-item").toArray();
+//   items.forEach((item) => {
+//     let left = item.style.left;
+//     let units = parseInt(left.slice(0, left.length-2));
+//     item.style.left = (lr ? (units - 100) : (units + 100)) + "vw";
+//   });
 
-  //post loop correction
-  if (!lr){
+//   //post loop correction
+//   if (!lr){
 
-  }
-}
+//   }
+// }
 
 /**
  * Cycling carosel:
